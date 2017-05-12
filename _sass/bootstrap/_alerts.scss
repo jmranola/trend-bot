@@ -1,0 +1,118 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  border: 1px solid transparent;
+  position: relative;
+  margin: 20px auto;
+  font-size: smaller;
+  p,
+  ul {
+    margin-bottom: 0;
+  }
+
+  > .alert-content {
+    display: block;
+    padding: $alert-padding;
+    margin-left: 50px;
+    margin-right: 5px;
+    background-color: #fff;
+
+    .alert-title {
+      font-size: $font-size-17;
+      font-weight: bold;
+    }
+
+    @include paragraph;
+
+    &:before {
+      font-family: FontAwesome;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 20px;
+      line-height: 20px;
+      width: 50px;
+      text-align: center;
+    }
+
+    // Adjust close link position
+    .close {
+      font-size: 25px;
+      line-height: 25px;
+      position: absolute;;
+      width: 50px;
+      top: 0;
+      right: 5px;
+      padding: 12.5px 15px;
+      color: inherit;
+    }
+
+  }
+
+}
+
+
+.alert-center {
+  margin: 20px auto;
+  display: table;
+}
+
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissible > .alert-content {
+  padding-right: ($alert-padding + 35);
+}
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-dark {
+  @include alert-variant($alert-dark-bg, $alert-dark-border, $alert-dark-text);
+  > .alert-content {
+    &:before {
+      content: "\f05a";
+    }
+  }
+}
+
+.alert-success {
+  @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+  > .alert-content {
+    &:before {
+      content: "\f05a";
+    }
+  }
+}
+
+.alert-info {
+  @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
+  > .alert-content:before {
+    content: "\f05a";
+  }
+}
+
+.alert-warning {
+  @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+  > .alert-content:before {
+    content: "\f071";
+  }
+}
+
+.alert-danger {
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+  > .alert-content:before {
+    content: "\f071";
+  }
+}

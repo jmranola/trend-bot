@@ -1,0 +1,27 @@
+//
+// Jumbotron
+// --------------------------------------------------
+
+
+.jumbotron {
+  min-height: $jumbotron-height;
+  padding-top: $jumbotron-padding;
+  background-color: $jumbotron-bg;
+
+  .heading-title {
+    font: $jumbotron-heading-font-size;
+    color: $jumbotron-heading-color;
+    margin-bottom: 20px;
+  }
+
+  .heading-subtitle {
+    font: $jumbotron-subhead-size;
+    color: $jumbotron-subhead-color;
+    margin-bottom: 35px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+}

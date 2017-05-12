@@ -1,0 +1,138 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant($color-default, $color-hover, $text-shadow-default, $text-shadow-hover, $box-shadow, $start-bg, $end-bg, $start-bg-hover, $end-bg-hover, $background, $border-default, $border-hover) {
+  color: $color-default;
+  border-radius: 6px;
+  background-color: $background;
+
+  &:hover {
+    color: $color-hover;
+    background-color: darken($background,10%);
+    border-color: $border-hover;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color-hover;
+    background-color: $background;
+    border-color: $border-hover;
+    &,
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color-hover;
+      background-color: darken($background,10%);
+      border-color: $border-hover;
+    }
+  }
+
+  &:focus,
+  &.focus {
+    color: $color-hover;
+    background: transparent;
+    background-color: $background;
+  }
+
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      &,
+      &:hover,
+      &:focus {
+        cursor: $cursor-disabled;
+        color: #AAAAAA;
+        background-color: #EAEAEA;
+        text-shadow: none;
+      }
+    }
+
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color-default;
+  }
+}
+
+
+
+@mixin button-outline-variant($color,$hover) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+  border-radius: 6px;
+
+  &:hover {
+    color: #fff;
+    background-color: $hover;
+    border-color: $hover;
+  }
+
+  &:focus,
+  &.focus {
+    color: #fff;
+    background-color: $color;
+        border-color: $color;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: #fff;
+    background-color: $color;
+        border-color: $color;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: #fff;
+      background-color: darken($color, 17%);
+          border-color: darken($color, 25%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      border-color: lighten($color, 20%);
+    }
+    &:hover {
+      border-color: lighten($color, 20%);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// Button sizes
+@mixin button-size($padding, $font-size, $font-line-height) {
+  padding: $padding;
+  font-size: $font-size;
+  line-height: $font-line-height;
+}

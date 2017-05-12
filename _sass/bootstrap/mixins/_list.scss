@@ -1,0 +1,9 @@
+@mixin list-icon-variant($parent, $icon, $color: inherit) {
+  #{$parent} > li,
+  li#{$parent} {
+    &::before {
+      content: $icon;
+      color: $color;
+    }
+  }
+}

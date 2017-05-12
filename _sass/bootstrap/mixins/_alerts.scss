@@ -1,0 +1,17 @@
+// Alerts
+
+@mixin alert-variant($background, $border, $color) {
+  background-color: $background;
+  border-color: $border;
+  color: inherit;
+
+  > .alert-content {
+    .alert-title {
+      color: $color;
+    }
+  }
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+}

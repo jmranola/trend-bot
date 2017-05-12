@@ -1,0 +1,89 @@
+//
+// Notification
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+.notification {
+  display: block;
+  border: 1px solid transparent;
+  // padding: 10px 15px;
+  border-radius: $border-radius-base;
+  margin: 15px 0;
+  position: relative;
+  font-size: small;
+}
+
+
+.notification-content {
+  // position: relative;
+  padding: 15px;
+  margin-left: 30px;
+
+  @include paragraph;
+
+  &:before {
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px 15px 10px;
+    font-size: 20px;
+    line-height: 1;
+    width: 50px;
+    text-align: center;
+  }
+
+}
+
+.notification-title {
+  font-size: $font-size-17;
+  font-weight: bold;
+}
+
+
+.notifcation-dark {
+  @include notification-variant($notification-dark-bg, $notification-dark-border, $notification-dark-color);
+  .notification-content {
+    &:before {
+      content: "\f05a";
+    }
+  }
+}
+
+.notifcation-success {
+  @include notification-variant($notification-success-bg, $notification-success-border, $notification-success-color);
+  .notification-content {
+    &:before {
+      content: "\f05a";
+    }
+  }
+}
+
+.notifcation-info {
+  @include notification-variant($notification-info-bg, $notification-info-border, $notification-info-color);
+  .notification-content {
+    &:before {
+      content: "\f05a";
+    }
+  }
+}
+
+.notifcation-warning {
+  @include notification-variant($notification-warning-bg, $notification-warning-border, $notification-warning-color);
+  .notification-content {
+    &:before {
+      content: "\f071";
+    }
+  }
+}
+
+.notifcation-danger {
+  @include notification-variant($notification-danger-bg, $notification-danger-border, $notification-danger-color);
+  .notification-content {
+    &:before {
+      content: "\f071";
+    }
+  }
+}

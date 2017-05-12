@@ -1,0 +1,99 @@
+// Tables
+
+@mixin table-row-variant($state, $background) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    &.#{$state} > td,
+    &.#{$state} > th,
+    > td.#{$state},
+    > th.#{$state} {
+      background-color: $background;
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.#{$state}:hover,
+    > th.#{$state}:hover,
+    &.#{$state}:hover > td,
+    &:hover > .#{$state},
+    &.#{$state}:hover > th {
+      background-color: $table-hover-bg;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// Tables
+
+@mixin table-state-variant($state, $background, $color) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    &.#{$state} > td,
+    &.#{$state} > th,
+    > td.#{$state},
+    > th.#{$state} {
+      background-color: $background;
+      height: 100px;
+      vertical-align: middle;
+      text-align: center;
+      color: $color;
+
+      > .table-state-title {
+        font-size: $font-size-17;
+        letter-spacing: $letter-spacing-17;
+        font-family: $font-family-base;
+        line-height: $font-line-height;
+        font-weight: 600;
+        color: inherit;
+        margin: 0;
+      }
+
+      > .table-state-subtitle {
+        color: inherit;
+        font-size: $font-size-base;
+        line-height: $line-height-computed;
+      }
+
+      > p,
+      > ul {
+        margin-bottom: 0;
+      }
+
+      > p + p {
+        margin-top: 5px;
+      }
+
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.#{$state}:hover,
+    > th.#{$state}:hover,
+    &.#{$state}:hover > td,
+    &:hover > .#{$state},
+    &.#{$state}:hover > th {
+      background-color: $background;
+      cursor: default;
+    }
+  }
+
+}

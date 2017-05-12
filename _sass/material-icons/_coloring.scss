@@ -1,0 +1,20 @@
+// Coloring
+// --------------------------
+
+.#{$md-css-prefix}-dark {
+  color: $md-dark;
+
+  &.#{$md-css-prefix}-inactive {
+    color: $md-dark-inactive;
+  }
+
+}
+
+.#{$md-css-prefix}-light {
+  color: $md-light;
+
+  &.#{$md-css-prefix}-inactive {
+    color: $md-light-inactive;
+  }
+
+}

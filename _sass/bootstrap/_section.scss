@@ -1,0 +1,447 @@
+//
+// sections
+// --------------------------------------------------
+
+
+// Base class
+.section {
+  margin-bottom: ($line-height-computed + 10px);
+  // background-color: $section-bg;
+  border: solid transparent;
+  border-width: 0;
+  // @include box-shadow(0 1px 3px rgba(0,0,0,.35));
+}
+
+// section contents
+.section-body {
+  margin-top: $section-body-margin;
+  margin-bottom: $section-body-margin;
+  max-width: 750px;
+  @include clearfix;
+  // @include paragraph;
+  > ul,
+  > p {
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+// Optional heading
+.section-heading {
+  margin-bottom: $section-heading-margin;
+  // border-bottom: 1px solid transparent;
+  // @include border-top-radius(($section-border-radius - 1));
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+
+  .section-subtitle {
+    font-size: $font-size-12;
+    line-height: $font-line-height;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.section-object {
+  padding: 20px;
+}
+
+.section-divider {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.section-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: $font-size-17;
+  font-family: $headings-font-family;
+  line-height: 25px;
+  letter-spacing: $letter-spacing-h7;
+  color: $section-heading-color;
+  display: inline-block;
+
+  border: solid transparent;
+  border-width: 0;
+
+  > a,
+  > small,
+  > .small,
+  > small > a,
+  > .small > a {
+    color: inherit;
+  }
+
+}
+
+.section-subtitle {
+  margin-bottom: ($line-height-computed / 2) !important;
+  font-size: $font-size-15;
+  color: $text-muted;
+}
+
+// Optional footer (stays gray in every modifier class)
+.section-footer {
+  @include clearfix; // clear it in case folks use .pull-* classes on buttons
+
+  .btn {
+      @include button-size ($btn-padding-sm, $font-size-13, $line-height-sm);
+      min-width: 1px;
+  }
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
+  }
+
+}
+
+
+
+
+
+.section-border-top {
+  border-top-width: 5px;
+
+  .section-heading {
+    margin-top: $section-heading-margin;
+  }
+
+  .section-footer {
+    padding: 10px 0;
+    border-top: 1px solid $section-inner-border;
+    > .section-footer-text {
+      float: left;
+      margin: 5px 0;
+    }
+    > .section-footer-button {
+      float: right;
+    }
+  }
+}
+
+.section-border-bottom {
+
+  .section-heading {
+    margin-top: $section-heading-margin;
+    margin-bottom: 0;
+    border-bottom: 3px solid;
+    padding-bottom: 10px;
+
+    .section-title {
+      margin-bottom: 0px;
+      border-bottom-width: 0px;
+      padding-bottom: 0;
+      padding-right: 0;
+    }
+
+  }
+  @media (min-width: $screen-sm-min) {
+    .section-heading {
+      margin-top: $section-heading-margin;
+      margin-bottom: 0;
+      border-bottom: 1px solid $default-border !important;
+      padding-bottom: 0;
+
+      .section-title {
+        margin-bottom: -1px;
+        border-bottom-width: 3px;
+        padding-bottom: 10px;
+        padding-right: 50px;
+      }
+
+    }
+  }
+
+  .section-footer {
+    background-color: $section-footer-bg;
+    padding: $section-footer-padding;
+    border-top: 1px solid $section-inner-border;
+    > .section-footer-text {
+      float: left;
+      margin: 5px 0;
+    }
+    > .section-footer-button {
+      float: right;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// List groups in sections
+//
+// By default, space out list group content from section headings to account for
+// any kind of custom content between the two.
+
+.section {
+  > .list-group,
+  > .section-collapse > .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+      border-radius: 0;
+    }
+
+    // Add border top radius for first one
+    &:first-child {
+      .list-group-item:first-child {
+        border-top: 0;
+        // @include border-top-radius(($section-border-radius - 1));
+      }
+    }
+
+    // Add border bottom radius for last one
+    &:last-child {
+      .list-group-item:last-child {
+        border-bottom: 0;
+        // @include border-bottom-radius(($section-border-radius - 1));
+      }
+    }
+  }
+  > .section-heading + .section-collapse > .list-group {
+    .list-group-item:first-child {
+      // @include border-top-radius(0);
+    }
+  }
+}
+// Collapse space between when there's no additional content.
+.section-heading + .list-group {
+  .list-group-item:first-child {
+    border-top-width: 0;
+  }
+}
+.list-group + .section-footer {
+  border-top-width: 0;
+}
+
+// Tables in sections
+//
+// Place a non-bordered `.table` within a section (not within a `.section-body`) and
+// watch it go full width.
+
+.section {
+  > .table,
+  > .table-responsive > .table,
+  > .section-collapse > .table {
+    margin-bottom: 0;
+    border-top: 1px solid $section-inner-border;
+    border-bottom: 1px solid $section-inner-border;
+
+    caption {
+      padding-left: $section-body-padding;
+      padding-right: $section-body-padding;
+    }
+
+    thead {
+      @include gradient-vertical(#F8F8F8, #EEEEEE, 0%, 100%);
+      > tr > th,
+      > tr > td {
+        padding: 10px 7.5px;
+
+        &:first-child {
+          padding-left: 15px;
+        }
+
+        &:last-child {
+          padding-right: 15px;
+        }
+      }
+
+    }
+    + .section-footer {
+      margin-top: -1px;
+    }
+
+  }
+  > .section-heading + .table,
+  > .section-heading + .table-responsive,
+  > .section-body + .table,
+  > .section-body + .table-responsive,
+  > .table + .section-body,
+  > .table-responsive + .section-body {
+    border-top: 1px solid $table-border-color;
+  }
+  > .table > tbody:first-child > tr:first-child th,
+  > .table > tbody:first-child > tr:first-child td {
+    border-top: 0;
+  }
+
+  > .table-bordered,
+  > .table-responsive > .table-bordered {
+    border: 0;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th:first-child,
+        > td:first-child {
+          border-left: 0;
+        }
+        > th:last-child,
+        > td:last-child {
+          border-right: 0;
+        }
+      }
+    }
+    thead {
+      > tr > th,
+      > tr > td {
+        padding: 10px 15px;
+      }
+    }
+    > tbody {
+      > tr:first-child {
+        > td {
+          border-bottom: 0;
+        }
+      }
+    }
+    > tbody,
+    > tfoot {
+      > tr:last-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
+}
+
+
+// Collapsable sections (aka, accordion)
+//
+// Wrap a series of sections in `.section-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.section-group {
+  margin-bottom: $line-height-computed;
+  @include box-shadow(0 2px 5px 0 rgba(0,0,0,.26));
+
+  // Tighten up margin so it's only between sections
+  .section {
+    margin-bottom: 0;
+    border-width: 1px 0;
+
+    + .section {
+      margin-top: -1px;
+    }
+
+  }
+
+  .section-heading {
+    margin-bottom: 0;
+    border-bottom: 0;
+    // padding: 10px 25px;
+    position: relative;
+    // background-color: $section-footer-bg;
+
+    > .section-title {
+      display: block;
+
+      .accordion-toggle {
+        padding: 10px 25px;
+        display: block;
+        &.collapsed {
+          font-weight: normal;
+          color: inherit;
+          &::before {
+            // content: "\f107";
+            @include transition(all .35s ease);
+            @include rotate(0);
+          }
+        }
+        &::before {
+          content: "\f105";
+          font-family: FontAwesome;
+          font-size: 20px;
+          color: $trend-red-500;
+          text-align: center;
+          width: 25px;
+          position: absolute;
+          right: 15px;
+          @include transition(all .35s ease);
+          @include rotate(90deg);
+        }
+        &:hover,
+        &:focus {
+          background-color: $default-hover-bg;
+        }
+      }
+
+    }
+
+    + .section-collapse > .section-body,
+    + .section-collapse > .list-group {
+      border-top: 1px solid $section-inner-border;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 15px 25px;
+      background-color: $default-bg;
+      max-width: initial;
+      // padding-left: 20px;
+      // border-left: 3px solid #ddd;
+    }
+
+  }
+
+  .section-footer {
+    border-top: 1px solid $section-inner-border;
+    + .section-collapse .section-body {
+      border-bottom: 1px solid $section-inner-border;
+    }
+  }
+}
+
+
+
+
+
+// Contextual variations
+.section-default {
+  @include section-variant($section-default-border, $section-default-text, $section-default-border);
+}
+.section-dark {
+  @include section-variant($section-dark-border, $section-dark-text, $section-dark-border);
+}
+.section-primary {
+  @include section-variant($section-primary-border, $section-primary-text, $section-primary-border);
+}
+.section-success {
+  @include section-variant($section-success-border, $section-success-text, $section-success-border);
+}
+.section-info {
+  @include section-variant($section-info-border, $section-info-text, $section-info-border);
+}
+.section-warning {
+  @include section-variant($section-warning-border, $section-warning-text, $section-warning-border);
+}
+.section-danger {
+  @include section-variant($section-danger-border, $section-danger-text, $section-danger-border);
+}

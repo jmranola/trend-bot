@@ -1,0 +1,521 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+
+  @include clearfix;
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      font-size: $font-size-13;
+      line-height: $line-height-computed;
+      color: $nav-link-color;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: $nav-link-hover-color;
+      }
+
+      .label,
+      .badge {
+        float: right;
+      }
+
+    }
+
+    &.active > a {
+      color: $nav-link-hover-color;
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      color: $nav-disabled-link-color;
+
+      &:hover,
+      &:focus {
+        color: $nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: $cursor-disabled;
+      }
+
+    }
+
+  }
+
+  &.nav-left {
+    text-align: left;
+  }
+
+  &.nav-center {
+    text-align: center;
+  }
+
+  &.nav-right {
+    text-align: right;
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      // background-color: $nav-link-hover-bg;
+      // border-color: $link-color;
+    }
+  }
+
+  // Nav dividers (deprecated with v3.0.1)
+  //
+  // This should have been removed in v3 with the dropping of `.nav-list`, but
+  // we missed it. We don't currently support this anywhere, but in the interest
+  // of maintaining backward compatibility in case you use it, it's deprecated.
+  .nav-divider {
+    @include nav-divider;
+  }
+
+  // Prevent IE8 from misplacing imgs
+  //
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
+
+}
+
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+  width: 100%;
+  display: block;
+  > li {
+    display: inline-block;
+    margin-bottom: -1px;
+    border-color: $default-border;
+    > a {
+      text-align: left;
+      padding: $nav-link-padding;
+    }
+    &.active {
+      z-index: 10;
+      > a {
+        font-weight: bold;
+        &,
+        &:hover,
+        &:focus {
+          border-bottom-color: transparent;
+          cursor: default;
+        }
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  // > li + li {
+  //   margin-top: 5px;
+  // }
+}
+
+.nav-tabs-one {
+  border-bottom: 1px solid $default-border;
+  > li {
+    border-style: solid;
+    border-width: 3px 0 1px;
+    &.active {
+      border-top-color: #DB3D44;
+      > a {
+        border-bottom: 1px solid #FFFFFF;
+        margin-bottom: -1px;
+        background: #FFFFFF
+      }
+    }
+    > a {
+      border: solid $default-border;
+      border-width: 0 1px;
+      @include gradient-vertical(#F8F8F8, #F0F0F0, 0%, 100%);
+    }
+  }
+  &.nav-justified {
+    border-bottom: 0;
+  }
+}
+
+.nav-tabs-two >li {
+  border: 0;
+  border-top: 3px solid $default-border;
+  &.active {
+    border-top-color: #DB3D44;
+  }
+  > a {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#DDDDDD), to(transparent));
+    background-image: -webkit-linear-gradient(#DDDDDD, transparent);
+    background-image:
+        -moz-linear-gradient(#DDDDDD, transparent),
+        -moz-linear-gradient(#DDDDDD, transparent);
+    background-image:
+        -o-linear-gradient(#DDDDDD, transparent),
+        -o-linear-gradient(#DDDDDD, transparent);
+    background-image:
+        linear-gradient(#DDDDDD, transparent),
+        linear-gradient(#DDDDDD, transparent);
+    -moz-background-size: 1px 100%;
+    background-size: 1px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+  }
+}
+
+.nav-tabs-three {
+  background-color: #F8F8F8;
+  border: 1px solid $default-border;
+  box-shadow: 1px 0px 0px 0 rgba(102,102,102,.01);
+  > li {
+    border: 0;
+    &.active {
+      > a {
+        &,
+        &:hover,
+        &:focus{
+          background-color: transparent;
+        }
+      }
+      &:before {
+        position: absolute;
+        bottom: 0px;
+        left: calc(50% - 11px);
+        display: inline-block;
+        border-right: 11px solid transparent;
+        border-bottom: 11px solid $default-border;
+        border-left: 11px solid transparent;
+        border-bottom-color: $default-border;
+        content: '';
+        z-index: 1;
+      }
+
+      &:after {
+        position: absolute;
+        bottom: 0px;
+        left: calc(50% - 10px);
+        display: inline-block;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #FFFFFF;
+        border-left: 10px solid transparent;
+        content: '';
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.nav-tabs-four {
+  border-bottom: 1px solid $default-border;
+  > li {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    &.active {
+      border-bottom: 3px solid #db3d44;
+    }
+    > a {
+      padding: 0 15px;
+      margin: 15px 0 12px;
+      border-right: 1px solid $default-border;
+    }
+    &:last-child a {
+      border-right: 0;
+    }
+  }
+}
+
+
+
+// Pills
+// -------------------------
+.nav-pills {
+  > li {
+    float: none;
+    border-bottom: 1px solid $default-border;
+    &:last-child {
+      border-bottom: 0;
+    }
+    > a {
+      padding: 8px 10px;
+      &:hover,
+      &:focus {
+        background-color: #F8F8F8;
+      }
+    }
+
+    // Active state
+    &.active > a {
+      font-weight: bold;
+      &,
+      &:hover,
+      &:focus {
+        color: #DB3D44;
+        background-color: #FFFFFF;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.nav-pills-one {
+  > li {
+    &.active > a {
+      padding-left: 7px;
+      border-left: 3px solid #DB3D44;
+    }
+  }
+}
+
+.nav-pills-multi {
+  > li {
+    &.active {
+      > a {
+        padding-left: 7px;
+        border-left: 3px solid #DB3D44;
+      }
+      > ul {
+        display: block;
+      }
+    }
+    ul{
+      display: none;
+      padding: 0;
+      margin: 0;
+      > li {
+        > a {
+          padding: 5px 30px;
+          &:hover {
+            padding-left: 29px;
+            border-left: 1px solid #DB3D44;
+          }
+        }
+        &.active {
+          > a {
+            padding-left: 29px;
+            border-left: 1px solid #DB3D44;
+          }
+          > ul {
+            display: block;
+          }
+        }
+        ul {
+          display: none;
+          > li {
+            > a {
+              padding: 5px 40px;
+              margin-left: -1px;
+              &:hover {
+                padding-left: 39px;
+                border-left: 1px solid #DB3D44;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+
+.nav-pills-two {
+  > li {
+    &.active {
+      border-bottom: 0;
+      > a {
+        padding-bottom: 7px;
+        border-bottom: 3px solid #DB3D44;
+        &,
+        &:hover,
+        &:focus {
+          padding-bottom: 7px;
+          border-bottom: 3px solid #DB3D44;
+        }
+      }
+    }
+  }
+}
+
+.nav-pills-three {
+  > li {
+    &.active > a {
+      padding-left: 16px;
+      border-left: 4px solid #DB3D44;
+    }
+    > a {
+      padding: 15px 20px;
+    }
+  }
+}
+
+.nav-pills-four {
+
+  > .nav-title {
+    font-size: $font-size-h5;
+    font-family: $headings-font-family;
+    color: #333333;
+    padding-bottom: 15px;
+  }
+  > li {
+    &.active > a {
+      color: #3399CC;
+      &,
+      &:hover,
+      &:focus {
+        color: #3399CC;
+      }
+    }
+    > a {
+      padding: 15px 8px;
+      &:hover,
+      &:focus {
+        color: #3399CC;
+      }
+    }
+  }
+}
+
+
+
+// Stacked pills
+.nav-stacked {
+  > li {
+    float: none;
+    + li {
+      margin-top: 2px;
+      margin-left: 0; // no need for this gap between nav items
+    }
+  }
+}
+
+
+// Nav variations
+// --------------------------------------------------
+
+// Justified nav links
+// -------------------------
+
+.nav-justified {
+  display: inline-block;
+  width: 100%;
+  > li {
+    float: none;
+    > a {
+      // text-align: center;
+      // margin-bottom: 5px;
+      white-space: nowrap;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    > li {
+      display: table-cell;
+      width: 1%;
+      > a {
+        text-align: center;
+        // margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
+.nav-tabs-justified {
+  border-bottom: 0;
+
+  > li > a {
+    // Override margin from .nav-tabs
+    // margin-right: 0;
+    // border-radius: $border-radius-base;
+  }
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    // border: 0;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    > li > a {
+      // border-bottom: 1px solid $nav-tabs-justified-link-border-color;
+      // border-radius: $border-radius-base $border-radius-base 0 0;
+    }
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      // border: 0;
+    }
+  }
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+
+    > p,
+    > ul,
+    > dl {
+      margin-bottom: 0;
+    }
+
+    > p + p {
+      margin-top: 5px;
+    }
+
+  }
+
+  > .active {
+    display: block;
+  }
+
+}
+
+.tab-header {
+  margin: 0;
+}
+
+// Dropdowns
+// -------------------------
+
+// Specific dropdowns
+.nav-tabs .dropdown-menu {
+  // make dropdown border overlap tab border
+  margin-top: -1px;
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  @include border-top-radius(0);
+}

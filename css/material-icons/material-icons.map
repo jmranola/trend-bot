@@ -1,0 +1,22 @@
+{
+	"version": 3,
+	"file": "../../_sass/material-icons/material-icons.css",
+	"sources": [
+		"../../_sass/material-icons/material-icons.scss",
+		"../../_sass/material-icons/_variables.scss",
+		"../../_sass/material-icons/_path.scss",
+		"../../_sass/material-icons/_core.scss",
+		"../../_sass/material-icons/_sizing.scss",
+		"../../_sass/material-icons/_coloring.scss"
+	],
+	"sourcesContent": [
+		"@import \"variables\";\r\n@import \"path\";\r\n@import \"core\";\r\n@import \"sizing\";\r\n@import \"coloring\";\r\n",
+		"// Variables\r\n// --------------------------\r\n\r\n$md-css-prefix:       md !default;\r\n$md-font-path:        \"../fonts/material-icons\" !default;\r\n$md-font-size-base:   24px !default;\r\n$md-line-height-base: 1 !default;\r\n\r\n$md-dark:             rgba(0, 0, 0, 0.54) !default;\r\n$md-dark-inactive:    rgba(0, 0, 0, 0.26) !default;\r\n$md-light:            rgba(255, 255, 255, 1) !default;\r\n$md-light-inactive:   rgba(255, 255, 255, 0.3) !default;\r\n",
+		"/* FONT PATH\r\n * -------------------------- */\r\n\r\n@font-face {\r\n  font-family: 'Material Icons';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  src: url(#{$md-font-path}/MaterialIcons-Regular.eot); /* For IE6-8 */\r\n  src: local('Material Icons'),\r\n       local('MaterialIcons-Regular'),\r\n       url(#{$md-font-path}/MaterialIcons-Regular.woff2) format('woff2'),\r\n       url(#{$md-font-path}/MaterialIcons-Regular.woff) format('woff'),\r\n       url(#{$md-font-path}/MaterialIcons-Regular.ttf) format('truetype');\r\n}\r\n",
+		"// Base Class Definition\r\n// -------------------------\r\n\r\n.#{$md-css-prefix} {\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: $md-font-size-base;  /* Preferred icon size */\r\n  display: inline-block;\r\n  line-height: $md-line-height-base;\r\n  text-transform: none;\r\n  letter-spacing: normal;\r\n  word-wrap: normal;\r\n  white-space: nowrap;\r\n  direction: ltr;\r\n\r\n  -webkit-font-smoothing: antialiased;\r\n  text-rendering: optimizeLegibility;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  font-feature-settings: 'liga';\r\n}\r\n",
+		"// Icon Sizes\r\n// -------------------------\r\n\r\n/* makes the font 33% larger relative to the icon container */\r\n.#{$md-css-prefix}-18 { font-size: 18px; }\r\n.#{$md-css-prefix}-24 { font-size: 24px; }\r\n.#{$md-css-prefix}-36 { font-size: 36px; }\r\n.#{$md-css-prefix}-48 { font-size: 48px; }\r\n",
+		"// Coloring\r\n// --------------------------\r\n\r\n.#{$md-css-prefix}-dark {\r\n  color: $md-dark;\r\n\r\n  &.#{$md-css-prefix}-inactive {\r\n    color: $md-dark-inactive;\r\n  }\r\n\r\n}\r\n\r\n.#{$md-css-prefix}-light {\r\n  color: $md-light;\r\n\r\n  &.#{$md-css-prefix}-inactive {\r\n    color: $md-light-inactive;\r\n  }\r\n\r\n}\r\n"
+	],
+	"mappings": "AEAA;gCACgC;AAEhC,UAAU;EACR,WAAW,EAAE,gBAAiB;EAC9B,UAAU,EAAE,MAAO;EACnB,WAAW,EAAE,GAAI;EACjB,GAAG,EAAM,sDAAC;EAAE,eAAe;EAC3B,GAAG,EAAE,uBAAK,EACL,8BAAK,EACD,wDAAC,CAAC,eAAM,EACR,uDAAC,CAAC,cAAM,EACR,sDAAC,CAAC,kBAAM;;;;ACTnB,AAAA,GAAG,CAAH;EACE,WAAW,EAAE,gBAAiB;EAC9B,WAAW,EAAE,MAAO;EACpB,UAAU,EAAE,MAAO;EACnB,SAAS,EFFW,IAAI;EEEQ,yBAAyB;EACzD,OAAO,EAAE,YAAa;EACtB,WAAW,EFHS,CAAC;EEIrB,cAAc,EAAE,IAAK;EACrB,cAAc,EAAE,MAAO;EACvB,SAAS,EAAE,MAAO;EAClB,WAAW,EAAE,MAAO;EACpB,SAAS,EAAE,GAAI;EAEf,sBAAsB,EAAE,WAAY;EACpC,cAAc,EAAE,kBAAmB;EACnC,uBAAuB,EAAE,SAAU;EACnC,qBAAqB,EAAE,MAAO;CAC/B;;ACjBD,8DAA8D;;AAC9D,AAAA,MAAM,CAAN;EAAE,SAAS,EAAE,IAAK;CAAI;;;AACtB,AAAA,MAAM,CAAN;EAAE,SAAS,EAAE,IAAK;CAAI;;;AACtB,AAAA,MAAM,CAAN;EAAE,SAAS,EAAE,IAAK;CAAI;;;AACtB,AAAA,MAAM,CAAN;EAAE,SAAS,EAAE,IAAK;CAAI;;;ACJtB,AAAA,QAAQ,CAAR;EACE,KAAK,EJIe,mBAAI;CIEzB;;;AAPD,AAAA,QAAQ,AAGL,YAAY,CAAb;EACE,KAAK,EJEa,mBAAI;CIDvB;;;AAIH,AAAA,SAAS,CAAT;EACE,KAAK,EJHe,KAAI;CISzB;;;AAPD,AAAA,SAAS,AAGN,YAAY,CAAb;EACE,KAAK,EJLa,wBAAI;CIMvB",
+	"names": []
+}

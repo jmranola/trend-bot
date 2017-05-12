@@ -1,0 +1,21 @@
+// Base Class Definition
+// -------------------------
+
+.#{$md-css-prefix} {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: $md-font-size-base;  /* Preferred icon size */
+  display: inline-block;
+  line-height: $md-line-height-base;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}

@@ -1,0 +1,555 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  @include clearfix;
+
+  > li {
+    position: relative;
+    display: inline-block;
+    float: left;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: $nav-link-padding;
+      color: $nav-link-color;
+      font-size: $font-size-13;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: $nav-link-hover-color;
+        background-color: $nav-link-hover-bg;
+      }
+    }
+    &.active {
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          color: $nav-link-active-color;
+          background-color: $nav-link-active-bg;
+          font-weight: bold;
+        }
+      }
+    }
+
+    &.disabled > a {
+      color: $nav-disabled-link-color;
+
+      &:hover,
+      &:focus {
+        color: $nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: $cursor-disabled;
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $nav-link-hover-color;
+      background-color: $nav-link-hover-bg;
+    }
+  }
+  > li > a > img {
+    max-width: none;
+  }
+
+  &.nav-divider {
+    &,
+    &:hover,
+    &:focus {
+      @include nav-divider($nav-divider-bg);
+    }
+  }
+
+}
+
+.nav-header {
+  display: block;
+  padding: $nav-link-padding;
+  color: $nav-link-color;
+  font-size: $font-size-13;
+  white-space: nowrap;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: .6;
+}
+
+.nav-tabs {
+  > li {
+    > a {
+      padding: $nav-tabs-padding;
+      &:hover,
+      &:focus {
+        color: $nav-tabs-hover-color;
+        background-color: $nav-tabs-hover-bg;
+      }
+    }
+    &.active {
+      z-index: 1;
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          color: $nav-tabs-active-color;
+          background-color: $nav-tabs-active-bg;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+        color: $nav-tabs-hover-color;
+        background-color: $nav-tabs-hover-bg;
+    }
+  }
+  &.nav-justified {
+    @extend .nav-justified;
+    @extend .nav-tabs-justified;
+  }
+}
+
+
+.nav-tabs-one {
+  border-bottom: 1px solid $nav-tabs-border;
+  > li {
+    border-top: 3px solid $nav-tabs-border;
+    > a {
+      @include gradient-vertical(#F8F8F8, #F0F0F0, 0%, 100%);
+      border: solid $nav-tabs-border;
+      border-width: 0 1px;
+      padding: ($nav-tabs-padding - 1.5px) $nav-tabs-padding;
+    }
+    + li {
+      margin-left: -1px;
+    }
+    &.active {
+      border-top-color: $nav-tabs-active-border;
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          color: $nav-tabs-hover-color;
+          background-color: #FFFFFF;
+          background-image: none;
+          border-bottom: 1px solid #FFFFFF;
+          margin-bottom: -1px !important;
+        }
+      }
+    }
+  }
+}
+
+.nav-tabs-two {
+
+  > li {
+
+    > a {
+
+      &:hover {
+
+      }
+    }
+
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+
+      }
+    }
+  }
+}
+
+
+.nav-tabs-three {
+  background-color: $default-bg;
+  border: 1px solid $default-border;
+  > li {
+
+    > a {
+
+      &:hover {
+
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &::before {
+        position: absolute;
+        bottom: -1px;
+        left: calc(50% - 11px);
+        display: inline-block;
+        border-right: 11px solid transparent;
+        border-bottom: 11px solid $default-border;
+        border-left: 11px solid transparent;
+        content: '';
+        z-index: 1;
+      }
+      &::after {
+        position: absolute;
+        bottom: -1px;
+        left: calc(50% - 10px);
+        display: inline-block;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #FFFFFF;
+        border-left: 10px solid transparent;
+        content: '';
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.nav-tabs-four {
+  border-bottom: 1px solid $nav-tabs-border;
+  > li {
+    margin-bottom: -1px;
+    > a {
+      padding: 0 $nav-link-padding;
+      margin: $nav-link-padding 0;
+      border-right: 1px solid $nav-tabs-border;
+    }
+    &:last-child a {
+      border-right: 0;
+    }
+    &.active {
+      &,
+      &:hover,
+      &:focus {
+        border-bottom: 3px solid $nav-tabs-active-border;
+      }
+      > a {
+        margin-bottom: ($nav-link-padding - 3px);
+      }
+    }
+    + li {
+      margin-left: -1px;
+    }
+  }
+}
+
+
+// Pills
+// -------------------------
+.nav-pills {
+  > li {
+    border-bottom: 1px solid $nav-pills-border;
+    display: block;
+    float: none;
+
+    // Links rendered as pills
+    > a {
+      padding: ($nav-pills-padding - 1px) $nav-pills-padding;
+      &:hover,
+      &:focus {
+        background-color: $nav-pills-hover-bg;
+        color: $nav-pills-hover-color;
+      }
+    }
+    &.active > a {
+      padding-left: ($nav-pills-padding - 3px);
+      &,
+      &:hover,
+      &:focus {
+        font-weight: bold;
+        border-left: 3px solid $nav-pills-active-border;
+        color: $nav-pills-active-color;
+        background-color: $nav-pills-active-bg;
+      }
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+
+// Stacked pills
+.nav-stacked {
+  > li {
+    float: none;
+    display: block;
+  }
+}
+
+
+
+
+
+.nav-tabs-pills {
+  overflow: hidden;
+  overflow-x: scroll;
+  width: 100%;
+  border-bottom: 1px solid $nav-tabs-border;
+  > li {
+    margin-bottom: -1px;
+    display: table-cell;
+    width: 1%;
+    float: none;
+    > a {
+      text-align: center;
+      padding: 0 $nav-link-padding;
+      margin: $nav-link-padding 0;
+      border-right: 1px solid $nav-tabs-border;
+      white-space: nowrap;
+      &:hover,
+      &:focus {
+        color: $nav-tabs-hover-color;
+        background-color: $nav-tabs-hover-bg;
+      }
+    }
+    &:last-child a {
+      border-right: 0;
+    }
+    &.active {
+      &,
+      &:hover,
+      &:focus {
+        border-bottom: 3px solid $nav-tabs-active-border;
+        > a {
+          margin-bottom: ($nav-link-padding - 3px);
+          &,
+          &:hover,
+          &:focus {
+            color: $nav-tabs-active-color;
+            background-color: $nav-tabs-active-bg;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    + li {
+      margin-left: -1px;
+    }
+  }
+  @media (min-width: $grid-float-breakpoint) {
+    border-bottom: 0;
+    > li {
+      width: 100%;
+
+      margin-bottom: 0;
+      border-bottom: 1px solid $nav-pills-border;
+      display: block;
+      float: none;
+
+      // Links rendered as pills
+      > a {
+        white-space: normal;
+        text-align: left;
+        margin: 0;
+        border-right: 0;
+        padding: ($nav-pills-padding - 1px) $nav-pills-padding;
+        &:hover,
+        &:focus {
+          background-color: $nav-pills-hover-bg;
+          color: $nav-pills-hover-color;
+        }
+      }
+      &.active {
+        &,
+        &:hover,
+        &:focus {
+        border-bottom: 1px solid $nav-pills-border;
+        > a {
+          margin: 0;
+          padding-left: ($nav-pills-padding - 3px);
+          &,
+          &:hover,
+          &:focus {
+            font-weight: bold;
+            border-left: 3px solid $nav-pills-active-border;
+            color: $nav-pills-active-color;
+            background-color: $nav-pills-active-bg;
+          }
+        }
+      }
+    }
+    &:last-child {
+      &,
+      &:hover,
+      &:focus {
+        border-bottom: 0;
+      }
+    }
+    + li {
+      margin-left: 0;
+    }
+  }
+}
+&::-webkit-scrollbar {
+  display: none;
+}
+
+}
+
+
+
+
+// Nav variations
+// --------------------------------------------------
+
+// Justified nav links
+// -------------------------
+
+.nav-justified {
+  width: 100%;
+
+  > li {
+    display: table-cell;
+    width: 1%;
+    float: none;
+    > a {
+      text-align: center;
+      // margin-bottom: 5px;
+    }
+  }
+
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
+  // @media (min-width: $screen-sm-min) {
+  //   > li {
+  //     display: table-cell;
+  //     width: 1%;
+  //     > a {
+  //       // margin-bottom: 0;
+  //     }
+  //   }
+  // }
+}
+
+// Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
+.nav-tabs-justified {
+  // border-bottom: 0;
+
+  > li > a {
+    // Override margin from .nav-tabs
+    margin-right: 0;
+    // border-radius: $border-radius-base;
+    white-space: nowrap;
+  }
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    // border: 1px solid $nav-tabs-justified-link-border;
+  }
+
+  // @media (min-width: $screen-sm-min) {
+  //   > li > a {
+  //     border-bottom: 1px solid $nav-tabs-justified-link-border;
+  //     border-radius: $border-radius-base $border-radius-base 0 0;
+  //   }
+  //   > .active > a,
+  //   > .active > a:hover,
+  //   > .active > a:focus {
+  //     border-bottom-color: $nav-tabs-justified-active-link-border;
+  //   }
+  // }
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}
+
+
+// Dropdowns
+// -------------------------
+
+// Specific dropdowns
+.nav-tabs .dropdown-menu {
+  // make dropdown border overlap tab border
+  margin-top: -1px;
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  // @include border-top-radius(0);
+}
+
+
+
+
+
+
+
+
+
+.nav-sm {
+  > li {
+    > a {
+      font-size: $font-size-12;
+      line-height: $line-height-sm;
+      padding: ($nav-tabs-padding - 5px) $nav-tabs-padding;
+    }
+  }
+  &.nav-tabs-one {
+    > li {
+      > a {
+        padding: ($nav-tabs-padding - 6.5px) $nav-tabs-padding;
+      }
+    }
+  }
+  &.nav-tabs-three {
+    > li {
+      > a {
+        padding: ($nav-tabs-padding - 5px) $nav-tabs-padding;
+        &::before {
+          left: calc(50% - 8px);
+          border-right: 8px solid transparent;
+          border-bottom: 8px solid $default-border;
+          border-left: 8px solid transparent;
+        }
+        &::after {
+          left: calc(50% - 7px);
+          border-right: 7px solid transparent;
+          border-bottom: 7px solid #FFFFFF;
+          border-left: 7px solid transparent;
+        }
+      }
+    }
+  }
+  &.nav-tabs-four {
+    > li {
+      > a {
+        margin: ($nav-tabs-padding - 5px) 0;
+        padding: 0 $nav-tabs-padding;
+      }
+      &.active {
+        > a {
+          margin-bottom: ($nav-tabs-padding - 8px);
+        }
+      }
+    }
+  }
+}

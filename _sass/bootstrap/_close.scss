@@ -1,0 +1,23 @@
+//
+// Close icons
+// --------------------------------------------------
+
+
+.close,
+.reset {
+  @include close;
+}
+
+button {
+
+  &.close,
+  &.reset {
+    padding: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+
+}

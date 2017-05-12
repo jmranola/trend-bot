@@ -1,0 +1,89 @@
+//
+// Wells
+// --------------------------------------------------
+
+
+// Base class
+.well {
+  padding: 20px;
+  margin-bottom: ($line-height-computed + 10px);
+  border: solid transparent;
+  border-width: 3px 0 0;
+  position: relative;
+
+  @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.20));
+
+  // @include paragraph;
+
+  > ul,
+  > p {
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .close {
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.well-title {
+  font-size: $font-size-h6;
+  letter-spacing: $letter-spacing-h6;
+  font-family: $headings-font-family;
+  line-height: $font-line-height;
+  margin-top: 0;
+}
+
+// Sizes
+.well-lg {
+  padding: 30px;
+
+  .close {
+    width: 75px;
+    height: 75px;
+  }
+}
+.well-sm {
+  padding: 15px;
+  .close {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+
+
+
+
+
+// Contextual variations
+.well-default {
+  border-color: $well-default-border;
+  background: $well-default-bg;
+}
+.well-dark {
+  @include well-variant($well-dark-border, $well-dark-color, $well-dark-bg);
+}
+.well-primary {
+  @include well-variant($well-primary-border, $well-primary-color, $well-primary-bg);
+}
+.well-success {
+  @include well-variant($well-success-border, $well-success-color, $well-success-bg);
+}
+.well-info {
+  @include well-variant($well-info-border, $well-info-color, $well-info-bg);
+}
+.well-warning {
+  @include well-variant($well-warning-border, $well-warning-color, $well-warning-bg);
+}
+.well-danger {
+  @include well-variant($well-danger-border, $well-danger-color, $well-danger-bg);
+}

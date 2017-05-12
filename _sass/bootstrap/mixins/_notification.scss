@@ -1,0 +1,7 @@
+// Notification
+
+@mixin notification-variant($background, $border, $color) {
+  background-color: $background;
+  border-color: $border;
+  color: $color;
+}

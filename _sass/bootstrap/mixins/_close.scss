@@ -1,0 +1,23 @@
+//
+// Close icons
+// --------------------------------------------------
+
+@mixin close {
+
+  float: right;
+  font-size: 20px;
+  font-weight: $close-font-weight;
+  line-height: 1;
+  color: $close-color;
+  outline: 0;
+  @include opacity(.25);
+
+  &:hover,
+  &:focus {
+    color: $close-color;
+    text-decoration: none;
+    cursor: pointer;
+    @include opacity(.75);
+  }
+
+}

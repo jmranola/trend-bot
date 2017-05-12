@@ -1,0 +1,831 @@
+// Forms
+//
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: $line-height-computed;
+  font-size: ($font-size-base * 1.5);
+  line-height: inherit;
+  color: $legend-color;
+  border: 0;
+  border-bottom: 1px solid $legend-border-color;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: inherit;
+}
+
+input[type="search"] {
+  @include box-sizing(border-box);
+  -webkit-appearance: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; // IE8-9
+  line-height: normal;
+}
+
+input[type="file"] {
+  display: block;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  @include tab-focus;
+}
+
+output {
+  display: block;
+  padding-top: ($padding-vertical-base + 1);
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $input-color;
+}
+
+
+// Checkboxes and radios
+//
+
+.radio,
+.checkbox {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  label {
+    min-height: $line-height-computed; // Ensure the input doesn't jump when there is no text
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px \9;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Radios and checkboxes on same line
+//
+
+.radio-inline,
+.checkbox-inline {
+  position: relative;
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+  .radio-inline + .radio-inline,
+  .checkbox-inline + .checkbox-inline {
+    margin-left: 0;
+  }
+
+
+@media (min-width: $grid-float-breakpoint) {
+
+  .radio-inline,
+  .checkbox-inline {
+    display: inline-block;
+  }
+
+  .radio-inline ~ .radio-inline,
+  .checkbox-inline ~ .checkbox-inline,
+  .radio-inline + .radio-inline,
+  .checkbox-inline + .checkbox-inline {
+    margin-top: 0;
+    margin-left: 10px; // space out consecutive inline controls
+  }
+
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+
+}
+
+.radio-inline,
+.checkbox-inline {
+
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+
+}
+
+.radio,
+.checkbox {
+
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: $cursor-disabled;
+    }
+  }
+
+}
+
+
+
+
+
+// Form Group
+//
+
+.form-group {
+  margin-bottom: $form-group-margin-bottom;
+}
+
+
+.has-error, .has-feedback, .has-icon, .has-warning, .has-info {
+  font-size: small;
+}
+
+
+// Form Control
+//
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: $input-padding-base;
+  font-size: $font-size-base;
+  line-height: $line-height-computed;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid $input-border;
+
+  //@include box-shadow(inset 0 1px rgba(34,34,34,.1));
+
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+
+  @include form-control-focus;
+
+  @include placeholder;
+
+  &::-ms-expand {
+    border: 0;
+    background-color: transparent;
+  }
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+
+  &:not(:valid) ~ .reset {
+    display: none;
+  }
+
+  // Disabled and read-only inputs
+  //
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $input-disabled-bg;
+    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+    color: $trend-disabled-color;
+    border-color: $input-disabled-border;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+  }
+
+}
+
+
+
+
+
+// Special styles for iOS temporal inputs
+//
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+
+    &.form-control {
+      line-height: $input-height-base;
+    }
+
+    &.input-sm,
+    .input-group-sm & {
+      line-height: $input-height-sm;
+    }
+
+    &.input-lg,
+    .input-group-lg & {
+      line-height: $input-height-lg;
+    }
+
+  }
+
+}
+
+
+
+
+
+// Reset height for `textarea`s
+//
+
+textarea.form-control {
+  height: auto;
+  resize: vertical;
+  min-height: 75px;
+  max-height: 200px;
+}
+
+
+
+
+
+// Help Block
+//
+
+.help-block {
+  display: block; // account for any element using help-block
+  margin-top: 7px;
+  margin-bottom: 7px;
+  color: $gray-700; // lighten the text some for contrast
+  font-size: $font-size-13;
+  line-height: $font-line-height;
+}
+
+.form-control ~ .help-block {
+  margin-top: 7px;
+  margin-bottom: 0;
+}
+
+
+
+
+
+
+// Form Required
+//
+
+.form-required {
+
+  .form-control {
+    border-left: 3px solid $brand-primary;
+    padding-left: $padding-horizontal-base - 3px;
+  }
+
+}
+
+// Static form control text
+//
+
+.form-control-static {
+  padding: $input-padding-base;
+  margin-bottom: 0;
+
+  &.input-lg,
+  &.input-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+
+
+
+
+// Form control feedback states
+//
+
+
+
+.form-reset,
+.has-feedback,
+.has-icon {
+  position: relative;
+}
+
+.form-reset {
+
+  .reset {
+    @include close;
+  }
+
+}
+
+.form-reset,
+.has-feedback {
+
+  .form-control {
+    padding-right: ($input-height-base + 13px);
+  }
+
+}
+
+.has-icon {
+
+  &.right {
+    .form-control {
+      padding-right: $input-height-base;
+    }
+    .form-control-icon {
+      right: 0;
+    }
+  }
+
+  &.left {
+    .form-control {
+      padding-left: $input-height-base;
+    }
+    .form-control-icon {
+      left: 0;
+    }
+  }
+
+}
+
+// Feedback icon (requires .glyphicon classes)
+//
+
+.form-control-feedback,
+.form-control-icon,
+.form-reset .reset {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  z-index: 10; // Ensure icon is above input groups
+  display: block;
+  width: $input-height-base;
+  height: $input-height-base;
+  line-height: $input-height-base;
+  text-align: center;
+}
+
+.form-control-feedback,
+.form-control-icon {
+  pointer-events: none;
+}
+
+.form-control-icon {
+  color: $trend-disabled-color;
+
+  img {
+    width: 20px;
+  }
+
+}
+
+.input-lg ~ .reset,
+.input-lg ~ .form-control-icon,
+.input-lg ~ .form-control-feedback,
+
+.input-group-lg ~ .reset,
+.input-group-lg ~ .form-control-icon,
+.input-group-lg ~ .form-control-feedback,
+
+.form-group-lg .form-control ~ .reset,
+.form-group-lg .form-control ~ .form-control-icon,
+.form-group-lg .form-control ~ .form-control-feedback {
+
+  width: $input-height-lg;
+  height: $input-height-lg;
+  line-height: $input-height-lg;
+
+}
+
+.input-sm ~ .reset,
+.input-sm ~ .form-control-icon,
+.input-sm ~ .form-control-feedback,
+
+.input-group-sm ~ .reset,
+.input-group-sm ~ .form-control-icon,
+.input-group-sm ~ .form-control-feedback,
+
+.form-group-sm .form-control ~ .reset,
+.form-group-sm .form-control ~ .form-control-icon,
+.form-group-sm .form-control ~ .form-control-feedback {
+
+  width: $input-height-sm;
+  height: $input-height-sm;
+  line-height: $input-height-sm;
+
+}
+
+.input-xs ~ .reset,
+.input-xs ~ .form-control-icon,
+.input-xs ~ .form-control-feedback,
+
+.input-group-xs ~ .reset,
+.input-group-xs ~ .form-control-icon,
+.input-group-xs ~ .form-control-feedback,
+
+.form-group-xs .form-control ~ .reset,
+.form-group-xs .form-control ~ .form-control-icon,
+.form-group-xs .form-control ~ .form-control-feedback {
+
+  width: $input-height-xs;
+  height: $input-height-xs;
+  line-height: $input-height-xs;
+
+}
+
+
+
+// Reposition feedback icon if input has visible label above
+//
+
+.has-feedback label {
+
+  & ~ .form-control-feedback,
+  & ~ .form-control-icon {
+    top: ($line-height-computed + 10); // Height of the `label` and its margin
+  }
+
+  &.sr-only ~ .form-control-feedback,
+  &.sr-only ~ .form-control-icon  {
+    top: 0;
+  }
+
+}
+
+.form-reset .control-label ~ .reset,
+.has-icon .control-label ~ .form-control-icon {
+  top: ($line-height-computed + 10);
+}
+
+
+
+
+// Form control sizing
+//
+
+@include input-size('.input-xs', $input-height-xs, $input-padding-xs, $btn-width-xs, $font-size-12);
+
+.form-group-xs {
+
+  select.form-control {
+    height: $input-height-xs;
+  }
+
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+
+  .form-control-static,
+  .form-control {
+    height: $input-height-xs;
+    padding: $input-padding-xs;
+  }
+
+  &.form-reset,
+  &.has-feedback {
+    .form-control {
+      padding-right: ($input-height-xs + 13px);
+    }
+  }
+
+  &.has-icon {
+    &.right {
+      .form-control {
+        padding-right: $input-height-xs;
+      }
+    }
+
+    &.left {
+      .form-control {
+        padding-left: $input-height-xs;
+      }
+    }
+  }
+}
+
+@include input-size('.input-sm', $input-height-sm, $input-padding-sm, $btn-width-sm, $font-size-13);
+
+.form-group-sm {
+
+  select.form-control {
+    height: $input-height-sm;
+  }
+
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+
+  .form-control-static,
+  .form-control {
+    height: $input-height-sm;
+    padding: $input-padding-sm;
+  }
+
+  &.form-reset,
+  &.has-feedback {
+    .form-control {
+      padding-right: ($input-height-sm + 13px);
+    }
+  }
+
+  &.has-icon {
+    &.right {
+      .form-control {
+        padding-right: $input-height-sm;
+      }
+    }
+
+    &.left {
+      .form-control {
+        padding-left: $input-height-sm;
+      }
+    }
+  }
+}
+
+@include input-size('.input-lg', $input-height-lg, $input-padding-lg, $btn-width-lg, $font-size-15);
+
+.form-group-lg {
+
+  select.form-control {
+    height: $input-height-lg;
+    line-height: $input-height-lg;
+  }
+
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+
+  .form-control-static,
+  .form-control {
+    height: $input-height-lg;
+    padding: $input-padding-lg;
+  }
+
+  &.form-reset,
+  &.has-feedback {
+    .form-control {
+      padding-right: ($input-height-lg + 13px);
+    }
+  }
+
+  &.has-icon {
+    &.right {
+      .form-control {
+        padding-right: $input-height-lg;
+      }
+    }
+    &.left {
+      .form-control {
+        padding-left: $input-height-lg;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+// Inline forms
+//
+
+@mixin form-inline {
+
+  .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+
+  .form-control {
+    display: inline-block;
+    width: auto; // Prevent labels from stacking above inputs in `.form-group`
+    vertical-align: middle;
+  }
+
+  .form-control-static {
+    display: inline-block;
+  }
+
+  .input-group {
+    display: inline-table;
+    vertical-align: middle;
+    .input-group-addon,
+    .input-group-btn,
+    .form-control {
+      width: auto;
+    }
+  }
+
+  .input-group > .form-control {
+    width: 100%;
+  }
+
+  .control-label {
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+
+  .radio,
+  .checkbox {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+    label {
+      padding-left: 0;
+    }
+  }
+
+  .radio input[type="radio"],
+  .checkbox input[type="checkbox"] {
+    position: relative;
+    margin-left: 0;
+  }
+
+}
+
+.form-inline {
+  @include form-inline;
+}
+
+
+
+
+
+// Horizontal forms
+//
+
+.form-horizontal {
+
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: ($padding-vertical-base + 1); // Default padding plus a border
+  }
+
+  .radio,
+  .checkbox {
+    min-height: ($line-height-computed + ($padding-vertical-base + 1));
+  }
+
+  .form-group {
+    @include make-row;
+
+    .control-label {
+      padding-right: 0;
+    }
+  }
+
+  .form-reset {
+    .reset {
+      right: 15px;
+      top: 0;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .control-label {
+      text-align: right;
+      margin-bottom: 0;
+      padding-top: ($padding-vertical-base + 1); // Default padding plus a border
+    }
+  }
+
+  // Validation states
+  //
+
+  .has-feedback .form-control-feedback {
+    right: floor(($grid-gutter-width / 2));
+  }
+
+  .has-icon {
+    &.right {
+      .form-control-icon {
+        right: floor(($grid-gutter-width / 2));
+      }
+    }
+    &.left {
+      .form-control-icon {
+        left: floor(($grid-gutter-width / 2));
+      }
+    }
+  }
+
+
+  // Form group sizes
+  //
+
+  .form-group-lg {
+    @media (min-width: $screen-sm-min) {
+      .control-label {
+        padding-top: ($padding-vertical-lg + 1);
+      }
+    }
+  }
+
+  .form-group-sm {
+    @media (min-width: $screen-sm-min) {
+      .control-label {
+        padding-top: ($padding-vertical-sm + 1);
+      }
+    }
+  }
+}
+
+
+
+
+// Feedback states
+//
+
+.has-success {
+  @include form-control-validation($form-success-color, $form-success-border, $form-success-bg, $form-success-message-bg);
+  .form-message::before {
+    content: "\f00c";
+  }
+}
+
+.has-info {
+  @include form-control-validation($form-info-color, $form-info-border, $form-info-bg, $form-info-message-bg);
+  .form-message::before {
+    content: "\f06a";
+  }
+}
+
+.has-warning {
+  @include form-control-validation($form-warning-color, $form-warning-border, $form-warning-bg, $form-warning-message-bg);
+  .form-message::before {
+    content: "\f06a";
+  }
+}
+
+.has-error {
+  @include form-control-validation($form-error-color, $form-error-border, $form-error-bg, $form-error-message-bg);
+  .form-message::before {
+    content: "\f071";
+  }
+}

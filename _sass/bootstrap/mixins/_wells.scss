@@ -1,0 +1,33 @@
+// wells
+
+@mixin well-variant($border, $color, $background) {
+  border-color: $border;
+  background: $background;
+
+  a,
+  .close {
+    &,
+    &:hover,
+    &:focus {
+      color: $color;
+    }
+  }
+
+  > small > a,
+  > .small > a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
+      cursor: pointer;
+    }
+
+    &:focus {
+      @include tab-focus;
+    }
+  }
+
+}
