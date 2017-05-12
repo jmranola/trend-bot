@@ -90,7 +90,7 @@
 }
 
 .banner-wrap {
-    background: #D71C2B;
+    background: #272727;
 
 }
 #main-banner {
@@ -98,7 +98,7 @@
     text-align: center;
     height: 90vh;
     background: #D71C2B;
-    background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.20)), url(../img/bg.png);
+    background: linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.60)), url(../img/bg.png);
     background-attachment: fixed;
     background-size: cover;
 }
@@ -162,7 +162,7 @@
 }
 
 #main-banner {
-  padding-top: 180px;
+  padding-top: 250px;
 }
 
 #bot-summary {
