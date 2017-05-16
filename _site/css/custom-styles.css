@@ -411,3 +411,25 @@ time {
     line-height: 30px;
     color: #666;
 }
+
+.navbar-nav.navbar-right > li > a {
+    padding: 13px 32px;
+    color: #fff;
+
+}
+.navbar-nav.navbar-right > li > a.btn-default {
+  color: #666;
+}
+
+.navbar-nav > li > a {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Open Sans",Arial;
+    color: #888;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    color: #c00;
+    background-color: transparent;
+    border-bottom: 5px solid #D71C2B;
+}
