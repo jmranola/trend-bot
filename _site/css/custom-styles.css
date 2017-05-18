@@ -428,7 +428,7 @@ time {
     font-family: "Open Sans",Arial;
     color: #888;
 }
-.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+#navbar-main ul:first-child > li > a:focus, #navbar-main ul:first-child > li > a:hover {
     color: #c00;
     background-color: transparent;
     border-bottom: 5px solid #D71C2B;
